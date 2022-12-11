@@ -35,10 +35,12 @@ class MyApp extends StatelessWidget {
             ),
       ),
       darkTheme: ThemeData.dark(),
-      home: CategoriesScreen(),
-      // routes: {
-      //   "/category-meals": (ctx) => CategoryMealsScreen(categoryId: categoryId, categoryTitle: categoryTitle)
-      // },
+      // home: CategoriesScreen(),
+      initialRoute: "/",
+      routes: {
+        "/": (ctx) => CategoriesScreen(),
+        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+      },
     );
   }
 }
