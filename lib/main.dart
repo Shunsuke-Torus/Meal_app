@@ -1,3 +1,5 @@
+import 'package:cook_app/categories_screen.dart';
+import 'package:cook_app/category_meals_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,31 +13,53 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        canvasColor: Color.fromRGBO(255, 254, 229, 1),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
+            .copyWith(secondary: Colors.cyan),
+        // primaryColor: Colors.grey[300],
+        fontFamily: "Raleway",
+        textTheme: ThemeData.light().textTheme.copyWith(
+              // 2021model
+              bodyLarge: const TextStyle(
+                color: Color.fromRGBO(20, 51, 51, 1),
+              ),
+              bodyMedium: const TextStyle(
+                color: Color.fromRGBO(20, 51, 51, 1),
+                fontFamily: "RobotoCondensed",
+              ),
+              titleMedium: const TextStyle(
+                fontSize: 20,
+                fontFamily: "RobotoCondensed",
+                fontWeight: FontWeight.bold,
+              ),
+            ),
       ),
       darkTheme: ThemeData.dark(),
-      home: const MyHomePage(),
+      home: CategoriesScreen(),
+      // routes: {
+      //   "/category-meals": (ctx) => CategoryMealsScreen(categoryId: categoryId, categoryTitle: categoryTitle)
+      // },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({super.key});
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("DeliMeals"),
-      ),
-      body: const Center(
-        child: Text("Navigation Time"),
-      ),
-    );
-  }
-}
+// class _MyHomePageState extends State<MyHomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text("DeliMeals"),
+//       ),
+//       body: const Center(
+//         child: Text("Navigation Time"),
+//       ),
+//     );
+//   }
+// }
