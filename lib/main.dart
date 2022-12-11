@@ -1,5 +1,5 @@
-import 'package:cook_app/categories_screen.dart';
-import 'package:cook_app/category_meals_screen.dart';
+import './screens/categories_screen.dart';
+import './screens/category_meals_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,9 +24,15 @@ class MyApp extends StatelessWidget {
                 color: Color.fromRGBO(20, 51, 51, 1),
               ),
               bodyMedium: const TextStyle(
+                color: Colors.white,
+                fontSize: 26,
+                fontFamily: "RobotoCondensed",
+              ),
+              bodySmall: const TextStyle(
                 color: Color.fromRGBO(20, 51, 51, 1),
                 fontFamily: "RobotoCondensed",
               ),
+
               titleMedium: const TextStyle(
                 fontSize: 20,
                 fontFamily: "RobotoCondensed",

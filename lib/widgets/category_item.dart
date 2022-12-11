@@ -1,6 +1,6 @@
 // GridView カテゴリー項目画面
 
-import 'package:cook_app/category_meals_screen.dart';
+import '../screens/category_meals_screen.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {

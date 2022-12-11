@@ -1,7 +1,8 @@
 // 2ページ目
 
 import 'package:flutter/material.dart';
-import './dummy_data.dart';
+import '../dummy_data.dart';
+import '../widgets/meal_item.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
   static const routeName = "/category-meals";
@@ -35,7 +36,14 @@ class CategoryMealsScreen extends StatelessWidget {
         // builderで管理すると良い点
         // 画面上にないアイテムは削除することでパフォーマンスを向上させる
         itemBuilder: (ctx, index) {
-          return Text(categoryMeals[index].title);
+          var _send = categoryMeals[index];
+          return MealItem(
+            title: _send.title,
+            imageUrl: _send.imageUrl,
+            duration: _send.duration,
+            complexity: _send.complexity,
+            affordability: _send.affordability,
+          );
         },
         itemCount: categoryMeals.length,
       ),
