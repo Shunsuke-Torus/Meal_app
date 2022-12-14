@@ -1,3 +1,5 @@
+import 'package:cook_app/widgets/category_item.dart';
+
 import './screens/categories_screen.dart';
 import './screens/category_meals_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,11 @@ class MyApp extends StatelessWidget {
         fontFamily: "Raleway",
         textTheme: ThemeData.light().textTheme.copyWith(
               // 2021model
+              titleMedium: const TextStyle(
+                fontSize: 25,
+                fontFamily: "RobotoCondensed",
+                fontWeight: FontWeight.bold,
+              ),
               bodyLarge: const TextStyle(
                 color: Colors.white,
                 fontSize: 26,
@@ -31,12 +38,8 @@ class MyApp extends StatelessWidget {
               ),
               bodySmall: const TextStyle(
                 color: Color.fromRGBO(20, 51, 51, 1),
-                fontFamily: "RobotoCondensed",
-              ),
-              titleMedium: const TextStyle(
                 fontSize: 20,
                 fontFamily: "RobotoCondensed",
-                fontWeight: FontWeight.bold,
               ),
             ),
       ),
@@ -45,9 +48,16 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (ctx) => CategoriesScreen(),
-        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
       },
+      // onGenerateRoute: (settings) {
+      //   print(settings.arguments);
+      //   return MaterialPageRoute(builder: (context) => CategoriesScreen());
+      // },
+      // onUnknownRoute: (settings) {
+      //   return MaterialPageRoute(builder: (context) => CategoriesScreen());
+      // },
     );
   }
 }
