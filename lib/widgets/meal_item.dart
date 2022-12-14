@@ -1,14 +1,17 @@
+import 'package:cook_app/screens/meal_detail_screen.dart';
 import 'package:flutter/material.dart';
 import '../models/meal.dart';
 
 class MealItem extends StatelessWidget {
+  final String id;
   final String title;
   final String imageUrl;
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
 
-  const MealItem({
+  MealItem({
+    required this.id,
     required this.title,
     required this.imageUrl,
     required this.duration,
@@ -16,11 +19,44 @@ class MealItem extends StatelessWidget {
     required this.affordability,
   });
 
-  void selectMeal() {}
+  // enumに対して対応する文字を出力する
+  String get complexityText {
+    switch (complexity) {
+      case Complexity.simple:
+        return "Simple";
+      case Complexity.challenging:
+        return "Challenging";
+      case Complexity.hard:
+        return "Hard";
+      default:
+        return "Unknown";
+    }
+  }
+
+  String get affordabilityText {
+    switch (affordability) {
+      case Affordability.luxurious:
+        return "Luxurious";
+      case Affordability.pricey:
+        return "Pricey";
+      case Affordability.affordable:
+        return "Affordable";
+      default:
+        return "Unknown";
+    }
+  }
+
+  void selectMeal(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
+      MealDetailScreen.routeName,
+      arguments: id,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: selectMeal,
+      onTap: () => selectMeal(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
@@ -57,7 +93,8 @@ class MealItem extends StatelessWidget {
                     ),
                     child: Text(
                       title,
-                      style: Theme.of(context).textTheme.bodyMedium,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      // 文字が長い場合段落をかえる
                       softWrap: true,
                       // ボックスを超える場合は自動的に切り取りフェードアウトさせる
                       overflow: TextOverflow.fade,
@@ -67,8 +104,46 @@ class MealItem extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: EdgeInsets.all(0),
-              child: Row(),
+              padding: const EdgeInsets.all(20),
+              // 2つの項目を2つのウィジェットで管理する
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.schedule),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Text(
+                        '$duration min',
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Icon(Icons.work),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Text(
+                        complexityText,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Icon(Icons.attach_money),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Text(
+                        affordabilityText,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),

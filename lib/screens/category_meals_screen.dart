@@ -17,7 +17,7 @@ class CategoryMealsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final routeArgs =
-        ModalRoute.of(context)?.settings.arguments as Map<String, String>;
+        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     final categoryId = routeArgs["id"];
     final categoryTitle = routeArgs["title"];
 
@@ -38,6 +38,7 @@ class CategoryMealsScreen extends StatelessWidget {
         itemBuilder: (ctx, index) {
           var _send = categoryMeals[index];
           return MealItem(
+            id: _send.id,
             title: _send.title,
             imageUrl: _send.imageUrl,
             duration: _send.duration,
